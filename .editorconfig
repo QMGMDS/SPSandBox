@@ -1,0 +1,64 @@
+# 当前配置文件是本目录及子目录的根配置，不再继续查找上级目录中的 .editorconfig
+root = true
+
+# 只匹配指定目录下的所有 .cs 文件
+[{GameUnity/Assets,GameServer}/**.cs]
+
+# 格式不符合时显示警告波浪线
+dotnet_diagnostic.IDE0055.severity = warning
+
+# 要求 if/else 使用大括号
+dotnet_diagnostic.IDE0011.severity = warning
+
+# 删除未使用的 using
+dotnet_diagnostic.IDE0005.severity = warning
+
+# 要求明确访问修饰符
+dotnet_diagnostic.IDE0040.severity = warning
+
+# 避免多个空白行
+dotnet_diagnostic.IDE2000.severity = warning
+dotnet_style_allow_multiple_blank_lines_experimental = false
+
+# 连续大括号之间不得有空行
+dotnet_diagnostic.IDE2002.severity = warning
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = false
+
+# 命名规则：
+# 类[pascal_case]
+# 结构体[pascal_case]
+# 枚举[pascal_case]
+# 属性[pascal_case]
+# 方法[pascal_case]
+# 事件[pascal_case]
+# 接口[I + pascal_case]
+dotnet_diagnostic.IDE1006.severity = warning
+
+# 私有字段命名规则[_camel_case]
+dotnet_naming_symbols.private_field.applicable_kinds = field
+dotnet_naming_symbols.private_field.applicable_accessibilities = private
+dotnet_naming_style.private_field_style.capitalization = camel_case
+dotnet_naming_style.private_field_style.required_prefix = _
+dotnet_naming_rule.private_field_rule.symbols = private_field
+dotnet_naming_rule.private_field_rule.style = private_field_style
+dotnet_naming_rule.private_field_rule.severity = warning
+
+# 私有静态字段命名规则[s_camel_case]
+dotnet_naming_symbols.private_static_field.applicable_kinds = field
+dotnet_naming_symbols.private_static_field.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_field.required_modifiers = static
+dotnet_naming_style.private_static_field_style.capitalization = camel_case
+dotnet_naming_style.private_static_field_style.required_prefix = s_
+dotnet_naming_rule.private_static_field_rule.symbols = private_static_field
+dotnet_naming_rule.private_static_field_rule.style = private_static_field_style
+dotnet_naming_rule.private_static_field_rule.severity = warning
+
+# 常量命名规则[all_upper]
+dotnet_naming_symbols.const_field.applicable_kinds = field
+dotnet_naming_symbols.const_field.applicable_accessibilities = *
+dotnet_naming_symbols.const_field.required_modifiers = const
+dotnet_naming_style.const_field_style.capitalization = all_upper
+dotnet_naming_style.const_field_style.word_separator = _
+dotnet_naming_rule.const_field_rule.symbols = const_field
+dotnet_naming_rule.const_field_rule.style = const_field_style
+dotnet_naming_rule.const_field_rule.severity = warning

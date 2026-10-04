@@ -1,0 +1,6 @@
+# Ignore directories at the repository root.
+/.agents/
+/.vscode/
+/docs/
+
+# GameUnity/ and GameService/ use their own .gitignore rules.
