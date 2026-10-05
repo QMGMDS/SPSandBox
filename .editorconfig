@@ -2,13 +2,13 @@
 root = true
 
 # 只匹配指定目录下的所有 .cs 文件
-[{GameUnity/Assets,GameServer}/**.cs]
+[{GameUnity/Assets,GameService}/**.cs]
 
 # 格式不符合时显示警告波浪线
 dotnet_diagnostic.IDE0055.severity = warning
 
 # 要求 if/else 使用大括号
-dotnet_diagnostic.IDE0011.severity = warning
+# dotnet_diagnostic.IDE0011.severity = warning
 
 # 删除未使用的 using
 dotnet_diagnostic.IDE0005.severity = warning
