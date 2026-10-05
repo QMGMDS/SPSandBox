@@ -1,0 +1,16 @@
+{
+    "name": "SPGame.Editor",
+    "rootNamespace": "SPGame",
+    "references": [
+        "GUID:f8774b0edb6542449bc01a151a619ddf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
