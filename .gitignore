@@ -3,4 +3,4 @@
 /.vscode/
 /docs/
 
-# GameUnity/ and GameService/ use their own .gitignore rules.
+# GameUnity/ and GameServer/ use their own .gitignore rules.

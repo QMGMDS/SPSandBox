@@ -2,7 +2,7 @@
 root = true
 
 # 只匹配指定目录下的所有 .cs 文件
-[{GameUnity/Assets,GameService}/**.cs]
+[{GameUnity/Assets,GameServer}/**.cs]
 
 # 格式不符合时显示警告波浪线
 dotnet_diagnostic.IDE0055.severity = warning
