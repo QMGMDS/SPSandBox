@@ -2,5 +2,6 @@
 /.agents/
 /.vscode/
 /docs/
+/AGENTS.md
 
 # GameUnity/ and GameServer/ use their own .gitignore rules.
