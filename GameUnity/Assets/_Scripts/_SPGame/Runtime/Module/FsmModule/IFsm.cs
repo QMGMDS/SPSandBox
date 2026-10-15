@@ -1,3 +1,5 @@
+using System;
+
 namespace SPGame
 {
     /// <summary>
@@ -23,8 +25,12 @@ namespace SPGame
         /// <summary>
         /// 启动状态机
         /// </summary>
-        /// <typeparam name="TState">指定启动状态</typeparam>
         void Start<TState>() where TState : BaseState<T>;
+
+        /// <summary>
+        /// 启动状态机
+        /// </summary>
+        void Start(Type stateType);
 
         /// <summary>
         /// 切换运行中的状态，同类型切换也会重新进入

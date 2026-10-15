@@ -34,12 +34,17 @@ namespace SPGame
 
         public void Start<TState>() where TState : BaseState<T>
         {
+            Start(typeof(TState));
+        }
+
+        public void Start(Type stateType)
+        {
             if (IsRunning)
             {
                 throw new InvalidOperationException("状态机已经启动");
             }
 
-            _currentState = GetState<TState>();
+            _currentState = _states[stateType];
             _currentState.OnEnter(this);
         }
 
