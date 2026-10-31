@@ -1,7 +1,9 @@
 {
     "name": "SPGame.Runtime",
     "rootNamespace": "SPGame",
-    "references": [],
+    "references": [
+        "YooAsset"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
