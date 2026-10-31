@@ -1,60 +1,54 @@
-using System;
+using UnityEngine;
 
 namespace SPGame
 {
     /// <summary>
-    /// 资源初始化配置
+    /// 资源初始化配置 SO
     /// </summary>
-    public sealed class ResourceSettings
+    [CreateAssetMenu(fileName = "ResourceSettings", menuName = "SPGame/ResourceSettings")]
+    public sealed class ResourceSettings : ScriptableObject
     {
+        [SerializeField]
+        [Tooltip("资源包名")]
+        private string _packageName;
+
+        [SerializeField]
+        [Tooltip("资源运行模式")]
+        private ResourcePlayMode _playMode = ResourcePlayMode.EditorSimulate;
+
+        [SerializeField]
+        [Tooltip("远端目录地址，仅联机模式使用")]
+        private string _hostServerUrl;
+        [SerializeField]
+        [Min(1)]
+        [Tooltip("最大同时下载文件数量")]
+        private int _maxConcurrentDownloads = 4;
+        [SerializeField]
+        [Min(0)]
+        [Tooltip("单个文件下载失败后的重试次数")]
+        private int _downloadRetryCount = 3;
+
+        [SerializeField]
+        [Min(1)]
+        [Tooltip("请求版本和资源清单的超时时间，单位为秒")]
+        private int _manifestTimeoutSeconds = 60;
+
         /// <summary>与 YooAsset 收集器配置一致的资源包名</summary>
-        public string PackageName { get; }
+        public string PackageName => _packageName;
 
         /// <summary>资源运行模式</summary>
-        public ResourcePlayMode PlayMode { get; }
+        public ResourcePlayMode PlayMode => _playMode;
 
         /// <summary>已按平台和安装包基线区分的远端目录地址</summary>
-        public string HostServerUrl { get; }
+        public string HostServerUrl => _hostServerUrl?.TrimEnd('/');
 
         /// <summary>最大同时下载文件数量</summary>
-        public int MaxConcurrentDownloads { get; }
+        public int MaxConcurrentDownloads => _maxConcurrentDownloads;
 
         /// <summary>单个文件下载失败后的重试次数</summary>
-        public int DownloadRetryCount { get; }
+        public int DownloadRetryCount => _downloadRetryCount;
 
         /// <summary>请求版本和资源清单的超时时间，单位为秒</summary>
-        public int ManifestTimeoutSeconds { get; }
-
-        public ResourceSettings(string packageName, ResourcePlayMode playMode, string hostServerUrl = null,
-            int maxConcurrentDownloads = 4, int downloadRetryCount = 3, int manifestTimeoutSeconds = 60)
-        {
-            #region 参数验证和处理
-
-            if (string.IsNullOrWhiteSpace(packageName))
-            {
-                throw new ArgumentException("资源包名不能为空", nameof(packageName));
-            }
-
-            if (playMode == ResourcePlayMode.Host)
-            {
-                // 判断 Host 模式下资源服务器 URL 是否合法
-                if (!Uri.TryCreate(hostServerUrl, UriKind.Absolute, out Uri uri)
-                    || (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps) // 检查协议是否为 HTTP 或 HTTPS
-                    || !string.IsNullOrEmpty(uri.Query) || !string.IsNullOrEmpty(uri.Fragment)) // 检查是否包含查询参数或片段
-                {
-                    throw new ArgumentException("联机模式需要不带查询参数和片段的 HTTP 或 HTTPS 目录地址", nameof(hostServerUrl));
-                }
-                hostServerUrl = hostServerUrl.TrimEnd('/');
-            }
-
-            #endregion
-
-            PackageName = packageName;
-            PlayMode = playMode;
-            HostServerUrl = hostServerUrl;
-            MaxConcurrentDownloads = maxConcurrentDownloads;
-            DownloadRetryCount = downloadRetryCount;
-            ManifestTimeoutSeconds = manifestTimeoutSeconds;
-        }
+        public int ManifestTimeoutSeconds => _manifestTimeoutSeconds;
     }
 }

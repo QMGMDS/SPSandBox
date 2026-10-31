@@ -6,7 +6,7 @@ namespace SPGame
     /// <summary>
     /// 流程配置 SO
     /// </summary>
-    [CreateAssetMenu(fileName = "ProcedureSettings", menuName = "SPGame/Procedure Settings")]
+    [CreateAssetMenu(fileName = "ProcedureSettings", menuName = "SPGame/ProcedureSettings")]
     public sealed class ProcedureSettings : ScriptableObject
     {
         [SerializeField]
