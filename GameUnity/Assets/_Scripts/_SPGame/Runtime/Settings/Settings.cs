@@ -25,5 +25,8 @@ namespace SPGame
 
         [SerializeField] private ProcedureSettings _procedureSettings;
         public static ProcedureSettings ProcedureSettings => Instance._procedureSettings;
+
+        [SerializeField] private ResourceSettings _resourceSettings;
+        public static ResourceSettings ResourceSettings => Instance._resourceSettings;
     }
 }

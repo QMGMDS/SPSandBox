@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _procedureSettings: {fileID: 11400000, guid: a7d2cd6ac9f011b42a89ddd33fe3dfc2, type: 2}
+  _resourceSettings: {fileID: 11400000, guid: d40c4bbc5f7c6c84590db96a37912b7d, type: 2}
 --- !u!1 &1950188270
 GameObject:
   m_ObjectHideFlags: 0
