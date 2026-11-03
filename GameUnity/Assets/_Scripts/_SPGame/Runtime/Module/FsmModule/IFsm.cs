@@ -1,6 +1,6 @@
 using System;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 一台有限状态机对外暴露的业务能力

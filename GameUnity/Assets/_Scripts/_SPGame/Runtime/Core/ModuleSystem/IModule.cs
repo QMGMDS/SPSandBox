@@ -1,4 +1,4 @@
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 需要参与轮询的模块契约

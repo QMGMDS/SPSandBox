@@ -1,5 +1,5 @@
 using UnityEngine;
-using SPGame;
+using SPGame.Runtime;
 
 public class GameEntry : MonoBehaviour
 {

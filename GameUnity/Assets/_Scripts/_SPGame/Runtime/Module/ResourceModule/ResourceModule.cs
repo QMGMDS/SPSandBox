@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 using UnityEngine.SceneManagement;
 
+using Cysharp.Threading.Tasks;
 using YooAsset;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 资源模块
@@ -41,7 +41,7 @@ namespace SPGame
         public bool IsInitialized => false;
         public bool IsReady => false;
 
-        public async Task InitializeAsync(ResourceSettings settings)
+        public async UniTask InitializeAsync(ResourceSettings settings)
         {
             _settings = settings;
 
@@ -82,7 +82,7 @@ namespace SPGame
             await _package.InitializePackageAsync(options);
         }
 
-        public async Task<ResourceUpdatePlan> CheckUpdateAsync(string targetVersion = null)
+        public async UniTask<ResourceUpdatePlan> CheckUpdateAsync(string targetVersion = null)
         {
             // 无目标版本则获取当前环境的资源版本，作为目标版本
             if (targetVersion == null)
@@ -104,7 +104,7 @@ namespace SPGame
             return new ResourceUpdatePlan(targetVersion, _downloader.TotalDownloadCount, _downloader.TotalDownloadBytes);
         }
 
-        public async Task DownloadAsync(ResourceUpdatePlan plan, IProgress<ResourceDownloadProgress> progress = null)
+        public async UniTask DownloadAsync(ResourceUpdatePlan plan, IProgress<ResourceDownloadProgress> progress = null)
         {
             ResourceDownloaderOperation downloader = _downloader;
 
@@ -122,14 +122,14 @@ namespace SPGame
             await downloader;
         }
 
-        public async Task<ResourceHandle<T>> LoadAssetAsync<T>(string address) where T : UnityEngine.Object
+        public async UniTask<ResourceHandle<T>> LoadAssetAsync<T>(string address) where T : UnityEngine.Object
         {
             AssetHandle handle = _package.LoadAssetAsync<T>(address);
             await handle;
             return new ResourceHandle<T>(handle);
         }
 
-        public async Task<ResourceSceneHandle> LoadSceneAsync(string address, LoadSceneMode loadMode = LoadSceneMode.Single)
+        public async UniTask<ResourceSceneHandle> LoadSceneAsync(string address, LoadSceneMode loadMode = LoadSceneMode.Single)
         {
             SceneHandle handle = _package.LoadSceneAsync(address, loadMode);
             await handle;

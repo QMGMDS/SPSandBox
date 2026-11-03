@@ -1,4 +1,4 @@
-namespace SPGame
+namespace SPGame.Runtime
 {
     public static class GameTime
     {

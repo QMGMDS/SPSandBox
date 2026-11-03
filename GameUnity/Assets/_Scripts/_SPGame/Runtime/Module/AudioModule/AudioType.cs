@@ -1,4 +1,4 @@
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 音频分类

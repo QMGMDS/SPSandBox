@@ -1,11 +1,11 @@
 using System;
-using System.Threading.Tasks;
 
 using UnityEngine.SceneManagement;
 
+using Cysharp.Threading.Tasks;
 using YooAsset;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 场景资源的使用句柄
@@ -37,7 +37,7 @@ namespace SPGame
         }
 
         /// <summary>卸载场景并释放引用，已经被场景切换卸载时直接返回</summary>
-        public async Task UnloadAsync()
+        public async UniTask UnloadAsync()
         {
             if (IsValid)
             {

@@ -1,4 +1,4 @@
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 一次检查生成的下载计划

@@ -1,4 +1,4 @@
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 游戏闪屏流程，展示发行商等开屏信息

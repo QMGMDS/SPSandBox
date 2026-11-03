@@ -1,4 +1,4 @@
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 支持的资源运行模式

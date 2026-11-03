@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 资源初始化配置 SO

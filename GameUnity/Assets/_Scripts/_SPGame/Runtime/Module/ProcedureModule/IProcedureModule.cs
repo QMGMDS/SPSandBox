@@ -1,6 +1,6 @@
 using System;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 流程模块契约

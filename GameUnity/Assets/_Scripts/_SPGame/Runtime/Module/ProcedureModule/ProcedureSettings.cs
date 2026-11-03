@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 流程配置 SO

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 模块系统，统一管理所有模块

@@ -1,6 +1,6 @@
 using System;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 本次下载尝试的进度，重试时仅统计尚未完成的文件

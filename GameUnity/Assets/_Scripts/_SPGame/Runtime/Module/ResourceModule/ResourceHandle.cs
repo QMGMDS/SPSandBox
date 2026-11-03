@@ -2,7 +2,7 @@ using System;
 
 using YooAsset;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 普通资源的使用句柄

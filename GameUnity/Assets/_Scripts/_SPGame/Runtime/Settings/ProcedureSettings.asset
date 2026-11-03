@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ProcedureSettings
   m_EditorClassIdentifier: 
   _procedureTypeNames:
-  - SPGame.LaunchProcedure
-  - SPGame.SplashProcedure
-  _entryProcedureTypeName: SPGame.LaunchProcedure
+  - SPGame.Runtime.LaunchProcedure
+  - SPGame.Runtime.SplashProcedure
+  _entryProcedureTypeName: SPGame.Runtime.LaunchProcedure

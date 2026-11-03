@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     public class Settings : MonoBehaviour
     {

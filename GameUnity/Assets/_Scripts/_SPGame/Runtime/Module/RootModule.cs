@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 模块运行时宿主

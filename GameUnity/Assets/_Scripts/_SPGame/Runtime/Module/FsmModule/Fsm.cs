@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SPGame
+namespace SPGame.Runtime
 {
     /// <summary>
     /// 状态机实现，由状态机模块创建和管理
