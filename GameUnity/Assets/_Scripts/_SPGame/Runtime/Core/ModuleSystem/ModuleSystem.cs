@@ -14,9 +14,7 @@ namespace SPGame.Runtime
         private static readonly List<IUpdateModule> s_updateModules = new List<IUpdateModule>();
         private static bool s_updateModulesDirty; // 脏标记
 
-        /// <summary>
-        /// 模块轮询
-        /// </summary>
+        /// <summary>模块轮询</summary>
         /// <param name="elapsedTime">逻辑时间，单位为秒</param>
         /// <param name="realElapsedTime">真实时间，单位为秒</param>
         public static void Update(float elapsedTime, float realElapsedTime)
@@ -45,9 +43,7 @@ namespace SPGame.Runtime
             }
         }
 
-        /// <summary>
-        /// 获取模块
-        /// </summary>
+        /// <summary>获取模块</summary>
         /// <remarks>
         /// 接口与实现必须是同一程序集、同一命名空间中的顶层非泛型类型，
         /// 接口名称以 I 开头，实现类名称为接口名称去掉首个 I，
@@ -74,6 +70,7 @@ namespace SPGame.Runtime
             }
 
             T instance = (T)Activator.CreateInstance(moduleType);
+            instance.OnCreate();
             RegisterModule(type, instance);
             return instance;
         }
@@ -107,7 +104,7 @@ namespace SPGame.Runtime
         {
             for (LinkedListNode<IModule> node = s_sortedModules.Last; node != null; node = node.Previous)
             {
-                node.Value.Destroy();
+                node.Value.OnDestroy();
             }
 
             s_modules.Clear();

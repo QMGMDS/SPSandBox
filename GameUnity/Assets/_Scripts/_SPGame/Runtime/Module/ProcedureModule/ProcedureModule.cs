@@ -7,26 +7,22 @@ namespace SPGame.Runtime
     /// </summary>
     public sealed class ProcedureModule : IProcedureModule
     {
-        private readonly IFsmModule _fsmModule;
+        private IFsmModule _fsmModule;
         private IFsm<IProcedureModule> _fsm;
-
-        public ProcedureModule()
-        {
-            _fsmModule = ModuleSystem.GetModule<IFsmModule>();
-        }
 
         #region IModule
 
         // 低于状态机模块，保证流程先销毁
         public int Priority => -1;
 
-        public void Destroy()
+        public void OnCreate()
         {
-            if (_fsm != null)
-            {
-                _fsmModule.DestroyFsm(_fsm);
-                _fsm = null;
-            }
+            _fsmModule = ModuleSystem.GetModule<IFsmModule>();
+        }
+
+        public void OnDestroy()
+        {
+            StopCurrentProcedure();
         }
 
         #endregion
@@ -37,7 +33,7 @@ namespace SPGame.Runtime
 
         public void StartProcedure(Type entryProcedureType, params BaseProcedure[] procedures)
         {
-            Destroy();
+            StopCurrentProcedure();
             _fsm = _fsmModule.CreateFsm<IProcedureModule>(this, procedures);
             _fsm.Start(entryProcedureType);
         }
@@ -48,5 +44,14 @@ namespace SPGame.Runtime
         }
 
         #endregion
+
+        private void StopCurrentProcedure()
+        {
+            if (_fsm != null)
+            {
+                _fsmModule.DestroyFsm(_fsm);
+                _fsm = null;
+            }
+        }
     }
 }

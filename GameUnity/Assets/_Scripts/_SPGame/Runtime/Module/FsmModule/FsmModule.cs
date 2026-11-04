@@ -20,6 +20,19 @@ namespace SPGame.Runtime
 
         public int Priority => 0;
 
+        public void OnCreate() { }
+
+        public void OnDestroy()
+        {
+            while (_fsms.Count > 0)
+            {
+                int lastIndex = _fsms.Count - 1;
+                BaseFsm fsm = _fsms[lastIndex];
+                _fsms.RemoveAt(lastIndex);
+                fsm.Destroy();
+            }
+        }
+
         public void ThisModuleUpdate(float elapsedTime, float realElapsedTime)
         {
             // 固定本轮更新范围，新建的状态机从下一轮开始更新
@@ -28,17 +41,6 @@ namespace SPGame.Runtime
             for (int i = 0; i < _updateFsms.Count; i++)
             {
                 _updateFsms[i].Update(elapsedTime, realElapsedTime);
-            }
-        }
-
-        public void Destroy()
-        {
-            while (_fsms.Count > 0)
-            {
-                int lastIndex = _fsms.Count - 1;
-                BaseFsm fsm = _fsms[lastIndex];
-                _fsms.RemoveAt(lastIndex);
-                fsm.Destroy();
             }
         }
 

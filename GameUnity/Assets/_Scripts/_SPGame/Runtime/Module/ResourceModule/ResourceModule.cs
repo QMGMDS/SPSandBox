@@ -17,17 +17,17 @@ namespace SPGame.Runtime
         private ResourcePackage _package;
         private ResourceDownloaderOperation _downloader;
 
-        public ResourceModule()
-        {
-            YooAssets.Initialize();
-        }
-
         #region IModule
 
         // 高于流程模块，保证流程先销毁，资源系统后销毁
         public int Priority => 1;
 
-        public void Destroy()
+        public void OnCreate()
+        {
+            YooAssets.Initialize();
+        }
+
+        public void OnDestroy()
         {
             _settings = null;
             _package = null;
