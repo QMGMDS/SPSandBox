@@ -3,7 +3,8 @@
     "rootNamespace": "SPGame.Runtime",
     "references": [
         "YooAsset",
-        "UniTask"
+        "UniTask",
+        "UnityEngine.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
