@@ -25,8 +25,16 @@ MonoBehaviour:
     AutoCollectShaders: 1
     IgnoreRuleName: NormalIgnoreRule
     Groups:
-    - GroupName: Default Group
-      GroupDesc: 
+    - GroupName: UI Prefab
+      GroupDesc: "UI \u9884\u5236\u4F53"
       AssetTags: 
       ActiveRuleName: EnableGroup
-      Collectors: []
+      Collectors:
+      - CollectPath: Assets/BundleAssets/UI
+        CollectorGUID: 98d524edce37d0e4fb392b6a62c89e15
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

@@ -13,7 +13,6 @@ namespace SPGame.Runtime
         // 最大窗口数量（Canvas 的最大排序范围为 32767）
         private const int MAX_SORTING_ORDER = 100;
 
-        private readonly Dictionary<Type, string> _addresses = new();
         private readonly Dictionary<Type, WindowRecord> _windows = new();
         private readonly List<Type> _displayOrder = new();
 
@@ -34,7 +33,6 @@ namespace SPGame.Runtime
         public void OnDestroy()
         {
             DestroyAllWindows();
-            _addresses.Clear();
 
             _uiRoot = null;
             _rootCanvas = null;
@@ -45,23 +43,9 @@ namespace SPGame.Runtime
 
         #region IUIModule
 
-        public void RegisterWindow<T>(string address) where T : UIWindow, new()
-        {
-            if (string.IsNullOrWhiteSpace(address))
-                throw new ArgumentException("窗口资源地址不能为空", nameof(address));
-
-            Type type = typeof(T);
-
-            if (!_addresses.TryAdd(type, address))
-                throw new InvalidOperationException($"窗口类型已注册：{type.FullName}");
-        }
-
         public async UniTask ShowWindowAsync<T>() where T : UIWindow, new()
         {
             Type type = typeof(T);
-
-            if (!_addresses.TryGetValue(type, out string address))
-                throw new InvalidOperationException($"窗口类型尚未注册：{type.FullName}");
 
             // 已加载的窗口直接显示
             if (_windows.TryGetValue(type, out WindowRecord existing))
@@ -78,17 +62,17 @@ namespace SPGame.Runtime
             try
             {
                 // 加载预制体
-                handle = await _resourceModule.LoadAssetAsync<GameObject>(address);
+                handle = await _resourceModule.LoadUIPrefabAsync<T>();
 
                 if (handle == null || handle.Asset == null)
-                    throw new InvalidOperationException($"窗口资源加载失败：{address}");
+                    throw new InvalidOperationException($"窗口资源加载失败：{type.Name}");
 
                 // 实例化窗口
                 instance = UnityEngine.Object.Instantiate(handle.Asset, _rootCanvas.transform, false);
 
                 Canvas canvas = instance.GetComponent<Canvas>();
                 if (canvas == null)
-                    throw new InvalidOperationException($"窗口缺少 Canvas：{address}");
+                    throw new InvalidOperationException($"窗口缺少 Canvas：{type.Name}");
 
                 canvas.enabled = false;
                 instance.SetActive(true);

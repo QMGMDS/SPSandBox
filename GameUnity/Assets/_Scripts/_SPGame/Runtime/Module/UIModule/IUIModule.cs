@@ -7,11 +7,6 @@ namespace SPGame.Runtime
     /// </summary>
     public interface IUIModule : IModule
     {
-        /// <summary>注册窗口</summary>
-        /// <typeparam name="T">窗口类型</typeparam>
-        /// <param name="address">窗口预制体地址</param>
-        void RegisterWindow<T>(string address) where T : UIWindow, new();
-
         /// <summary>异步显示窗口</summary>
         /// <remarks>排到最上方</remarks>
         /// <typeparam name="T">窗口类型</typeparam>

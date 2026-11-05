@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Cysharp.Threading.Tasks;
@@ -134,6 +135,11 @@ namespace SPGame.Runtime
             SceneHandle handle = _package.LoadSceneAsync(address, loadMode);
             await handle;
             return new ResourceSceneHandle(handle);
+        }
+
+        public UniTask<ResourceHandle<GameObject>> LoadUIPrefabAsync<T>()
+        {
+            return LoadAssetAsync<GameObject>(typeof(T).Name);
         }
 
         #endregion

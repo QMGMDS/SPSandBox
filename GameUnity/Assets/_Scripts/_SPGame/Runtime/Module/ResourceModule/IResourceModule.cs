@@ -1,5 +1,6 @@
 using System;
 
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Cysharp.Threading.Tasks;
@@ -44,5 +45,10 @@ namespace SPGame.Runtime
         /// <param name="loadMode">加载模式</param>
         /// <returns>场景句柄，用于卸载场景</returns>
         UniTask<ResourceSceneHandle> LoadSceneAsync(string address, LoadSceneMode loadMode = LoadSceneMode.Single);
+
+        /// <summary>加载 UI 预制体资源</summary>
+        /// <typeparam name="T">预制体名字</typeparam>
+        /// <returns></returns>
+        UniTask<ResourceHandle<GameObject>> LoadUIPrefabAsync<T>();
     }
 }
