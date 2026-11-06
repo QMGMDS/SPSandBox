@@ -7,5 +7,6 @@ public class GameEntry : MonoBehaviour
     {
         ModuleSystem.GetModule<IFsmModule>();
         Settings.ProcedureSettings.StartProcedure();
+        DontDestroyOnLoad(this);
     }
 }

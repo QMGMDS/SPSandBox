@@ -1,7 +1,10 @@
 {
     "name": "Game.Runtime",
     "rootNamespace": "Game.Runtime",
-    "references": [],
+    "references": [
+        "UniTask",
+        "SPGame.Runtime"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

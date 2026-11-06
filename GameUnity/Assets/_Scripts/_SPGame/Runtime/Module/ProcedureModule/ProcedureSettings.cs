@@ -14,7 +14,8 @@ namespace SPGame.Runtime
         private string[] _procedureTypeNames =
         {
             typeof(LaunchProcedure).FullName,
-            typeof(SplashProcedure).FullName
+            typeof(ResourceInitProcedure).FullName,
+            typeof(StartGameProcedure).FullName
         };
 
         [SerializeField]

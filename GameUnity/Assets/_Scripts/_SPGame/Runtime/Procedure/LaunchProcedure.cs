@@ -7,7 +7,7 @@ namespace SPGame.Runtime
     {
         public override void OnEnter(IFsm<IProcedureModule> fsm)
         {
-            fsm.Owner.SwitchState<SplashProcedure>();
+            fsm.Owner.SwitchState<ResourceInitProcedure>();
         }
     }
 }
