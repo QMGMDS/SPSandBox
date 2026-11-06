@@ -76,8 +76,6 @@ namespace SPGame.Runtime
 
                 canvas.enabled = false;
                 instance.SetActive(true);
-                canvas.overrideSorting = true;
-                canvas.sortingLayerID = _rootCanvas.sortingLayerID;
 
                 // 初始化窗口逻辑
                 window = new T();
@@ -90,10 +88,12 @@ namespace SPGame.Runtime
                 added = true;
 
                 _displayOrder.Add(type);
-                RecalculateSortingOrders();
 
-                // 显示窗口
+                // 启用 Canvas 后设置独立排序，再通知窗口显示
                 canvas.enabled = true;
+                canvas.overrideSorting = true;
+                canvas.sortingLayerID = _rootCanvas.sortingLayerID;
+                RecalculateSortingOrders();
                 window.NotifyVisible();
 
                 // 所有权转交给 WindowRecord
